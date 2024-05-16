@@ -1,5 +1,5 @@
 "use client";
-import { sendMail } from "@/lib/mail";
+
 import { sendMailToRecipient } from "@/serverAction/sendMail";
 import axios from "axios";
 import React from "react";
@@ -34,7 +34,7 @@ export default function Table({ records, setRecords }: TableProps) {
     fetchRecords().then((_) => {});
   }, []);
 
-  useEffect(() => {}, [_id]);
+  //useEffect(() => {}, [_id]);
 
   const deleteUser = async (id: string) => {
     try {
@@ -48,7 +48,9 @@ export default function Table({ records, setRecords }: TableProps) {
   };
 
   const fetchRecords = async () => {
-    const res = await axios.get<Record[]>("/api/users/getData");
+    const res = await axios.get<Record[]>("/api/users/getData", {
+      timeout: 5000, // 5 seconds timeout
+    });
     console.log(res.data);
     setRecords(res.data);
   };

@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer'
 
-export async function sendMail({name, subject, body}:{name:string;subject:string;body:string}){
+export async function sendMail({ subject, body}:{name:string;subject:string;body:string}){
     const {SMTP_EMAIL, SMTP_PASSWORD} = process.env
 
     const transport = nodemailer.createTransport({
@@ -17,14 +17,14 @@ export async function sendMail({name, subject, body}:{name:string;subject:string
         console.log(testResult)
       }catch(error){
         console.log(error)
-        return
+        return                        
       }
 
       try{
         const sendResult = transport.sendMail({
           from: SMTP_EMAIL,
-          to: ' info@redpositive.in',
-          subject:subject,
+          to: 'justchilloo86@gmail.com',
+          subject,
           html: body
         })
         console.log(sendResult)
