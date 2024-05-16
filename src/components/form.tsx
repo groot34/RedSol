@@ -35,7 +35,9 @@ export default function FormSave({ setRecords }: FormProps) {
   const onSave = async () => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/profile", user);
+      const response = await axios.post("/api/users/profile", user,{
+        timeout: 15000 // Set timeout to 5 seconds (5000 milliseconds)
+      });
       console.log("Save success", response.data);
       await fetchRecords();
       toast.success("Data Saved");
