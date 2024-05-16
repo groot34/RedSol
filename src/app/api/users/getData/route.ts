@@ -1,12 +1,12 @@
 import { connect } from "@/dbConfig/dbConfig";
 import User from '@/models/userModel'
 import { NextRequest,NextResponse } from "next/server";
-
+ connect();
 
 export async function GET(){
-    await connect();
     try{
         const records = await User.find({});
+        console.log(records)
         return NextResponse.json(records);
     }catch(error){
         console.error(error);

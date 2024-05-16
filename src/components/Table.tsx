@@ -48,9 +48,7 @@ export default function Table({ records, setRecords }: TableProps) {
   };
 
   const fetchRecords = async () => {
-    const res = await axios.get<Record[]>("/api/users/getData", {
-      timeout: 5000, // 5 seconds timeout
-    });
+    const res = await axios.get<Record[]>("/api/users/getData");
     console.log(res.data);
     setRecords(res.data);
   };
