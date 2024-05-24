@@ -23,7 +23,7 @@ export async function sendMail({ subject, body}:{name:string;subject:string;body
       try{
         const sendResult = transport.sendMail({
           from: SMTP_EMAIL,
-          to: 'justchilloo86@gmail.com',
+          to: 'info@redpositive.in',
           subject,
           html: body
         })
